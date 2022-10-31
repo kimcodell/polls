@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>설문조사 앱 | 목록</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/styles/index.css' %}">
+</head>
+<body>
+    {% if latest_question_list %}
+        <div class="list-container">
+            <h1>설문 목록</h1>
+            <ol>
+                {% for question in latest_question_list %}
+                    <li class="question-text"><a href="{% url 'polls:detail' question.id %}" class="question-text">{{question.question_text}}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
