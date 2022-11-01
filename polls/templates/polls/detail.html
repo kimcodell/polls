@@ -15,16 +15,15 @@
 
     <div class="form-container">
         <form action="{% url 'polls:vote' question.id %}" method="post" class="form-box">
-    {% csrf_token %}
-    {% for choice in question.choice_set.all %}
-        <div class="choice">
-            <input type="checkbox" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
-            <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br>
-        </div>
-    {%endfor%}
-    <input type="submit" value="Vote" class="vote-button">
-    </form>
+            {% csrf_token %}
+            {% for choice in question.choice_set.all %}
+                <div class="choice">
+                    <input type="checkbox" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+                    <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br>
+                </div>
+            {%endfor%}
+            <input type="submit" value="Vote" class="vote-button">
+        </form>
     </div>
-
 </body>
 </html>
